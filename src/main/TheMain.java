@@ -5,19 +5,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import viewcontroller.Controller;
 
 public class TheMain extends Application
 {
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("viewcontroller/view.fxml"));
-        primaryStage.setTitle("Phonebook");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-    }
-
     public static void main(String[] args)
     {
         launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(Controller.class.getResource("view.fxml"));
+            Parent root = loader.load();
+
+            primaryStage.setTitle("Phonebook");
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+
+        }
+        catch(Exception ignored)
+        {
+            System.out.println("Error occured!");
+        }
     }
 }
