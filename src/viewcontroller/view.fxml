@@ -28,7 +28,7 @@
             <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="450.0">
                <children>
                   <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#prevPerson" prefHeight="60.0" prefWidth="150.0" text="&lt;&lt;" />
-                  <Label fx:id="currentPage" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="150.0" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="currentPage" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="150.0" textOverrun="CENTER_ELLIPSIS" />
                   <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#nextPerson" prefHeight="60.0" prefWidth="150.0" text="&gt;&gt;" />
                </children>
             </HBox>

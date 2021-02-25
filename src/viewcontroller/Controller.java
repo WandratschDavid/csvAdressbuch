@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.Person;
 import model.Phonebook;
 
 import java.net.URL;
@@ -25,29 +26,45 @@ public class Controller implements Initializable
 
     private Phonebook pB = new Phonebook();
 
+    private int currentIndex = 1;
+
 
     @FXML
     private void nextPerson()
     {
-        //#############################################################    IMPLEMENTATION NEEDED    ##########################################################################
+        currentIndex++;
+
+        if (currentIndex > pB.getSize()) {currentIndex = 1;}
+
+        updateDisplayedPerson();
     }
 
     @FXML
     private void prevPerson()
     {
-        //#############################################################    IMPLEMENTATION NEEDED    ##########################################################################
+        currentIndex--;
+
+        if (currentIndex < 1) {currentIndex = pB.getSize();}
+
+        updateDisplayedPerson();
     }
 
     @FXML
     private void addPerson()
     {
-        //#############################################################    IMPLEMENTATION NEEDED    ##########################################################################
+        pB.addPerson(nameTxtField.getText(), addressTxtField.getText(), phoneNumTxtField.getText());
+
+        currentIndex = pB.getSize();
+
+        updateDisplayedPerson();
     }
 
     @FXML
     private void delPerson()
     {
-        //#############################################################    IMPLEMENTATION NEEDED    ##########################################################################
+        pB.deletePerson(currentIndex);
+
+        updateDisplayedPerson();
     }
 
     @FXML
@@ -55,9 +72,9 @@ public class Controller implements Initializable
     {
         String name = nameTxtField.getText();
         String address = addressTxtField.getText();
-        String telNum = phoneNumTxtField.getText();
+        String phoneNum = phoneNumTxtField.getText();
 
-        //#############################################################    IMPLEMENTATION NEEDED    ##########################################################################
+        pB.editPerson(name, address, phoneNum, currentIndex);
     }
 
     @FXML
@@ -66,10 +83,16 @@ public class Controller implements Initializable
     @FXML
     private void saveToCSV(){pB.saveCSV();}
 
+    private void updateDisplayedPerson()
+    {
+        Person person = pB.getPerson(currentIndex);
+        nameTxtField.setText(person.getName());
+        addressTxtField.setText(person.getAddress());
+        phoneNumTxtField.setText(person.getPhoneNum());
 
-    //#############################################################    IMPLEMENTATION NEEDED    ##########################################################################
+        currentPage.setText(currentIndex + "/" + pB.getSize());
+    }
 
-    
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {}
 }

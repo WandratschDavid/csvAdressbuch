@@ -22,10 +22,6 @@ public class Person
     @Override
     public String toString()
     {
-        String s = this.name + ";" +
-                this.address + ";" +
-                this.phoneNum;
-
-        return s;
+        return this.name + ";" + this.address + ";" + this.phoneNum;
     }
 }

@@ -29,7 +29,7 @@ public class TheMain extends Application
         }
         catch(Exception ignored)
         {
-            System.out.println("Error occured!");
+            System.out.println("Error occured while loading fxml-file!");
         }
     }
 }
